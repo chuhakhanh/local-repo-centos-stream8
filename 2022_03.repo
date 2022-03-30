@@ -28,6 +28,12 @@ baseurl=http://repo-1/2022_03/docker/docker-ce-stable/
 enabled=1
 gpgcheck=0
 
+[Docker]
+name=Docker 
+baseurl=http://repo-1/2022_03/docker/docker
+enabled=1
+gpgcheck=0
+
 [epel-8]
 name=EPEL 8
 baseurl=http://10.1.17.33/2022_03/epel/8/Everything/x86_64/
