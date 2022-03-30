@@ -1,21 +1,13 @@
 # Deploy registry
 
 ## Configure storage
-
-docker run -d -p 4000:4000 --restart=always --name registry registry:2
-
-docker run -d \
-  -p 4000:5000 \
-  --restart=always \
-  --name registry \
-  -v /data/registry:/var/lib/registry \
-  registry:2
-
 sudo dnf install python3-pip
 sudo dnf install python3-devel libffi-devel gcc openssl-devel python3-libselinux
 pip3 install 'ansible==2.10.7'
 pip3 install git+https://opendev.org/openstack/kolla-ansible@stable/xena
 cp -r  /usr/local/share/kolla-ansible/etc_examples/kolla/ /etc/
+
+docker run -d -p 4000:5000 --restart=always --name registry -v /data/registry:/var/lib/registry registry:2
 
 ## List of required images
 quay.io/openstack.kolla/centos-source-nova-compute                    xena      9e8825ca4e0d   4 days ago   2.43GB
