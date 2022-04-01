@@ -1,6 +1,7 @@
 mkdir -p /data/repos/2022_03/8-stream
 
-
+## Setup httpd
+yum install httpd
 
 ##	Repo list
 ### Centos 8 Stream Repos
