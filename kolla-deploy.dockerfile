@@ -1,5 +1,4 @@
-FROM python:3.9
-MAINTAINER SVTECH_CLOUD_TEAM
+FROM python:3.8
 LABEL Remarks="Dockerfile for kolla-ansible deploy"
 ENV container docker
 
