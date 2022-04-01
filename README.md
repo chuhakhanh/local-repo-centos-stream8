@@ -31,3 +31,5 @@ $ sudo packstack --allinone
 cp conf/httpd.conf /etc/httpd/conf/httpd.conf
 
 docker build -t kolla-deploy:xena --force-rm -f kolla-deploy.dockerfile .
+docker run -d --name deploy-1 kolla-deploy:xena 
+docker run -d -p 4000:5000 --restart=always --name registry -v /data/registry:/var/lib/registry registry:2
