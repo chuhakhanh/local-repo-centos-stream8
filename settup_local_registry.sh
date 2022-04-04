@@ -236,3 +236,8 @@ systemctl restart docker
 
 
 docker pull repo-1:4000/centos-source-cinder-api:xena
+
+
+## Create deployment docker for Xena
+docker build -t kolla-deploy:xena --force-rm -f kolla-deploy.dockerfile .
+docker run -d --name deploy-1 kolla-deploy:xena 

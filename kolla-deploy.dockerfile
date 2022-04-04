@@ -11,10 +11,8 @@ RUN cd /lib/systemd/system/sysinit.target.wants/ \
     && rm -f /lib/systemd/system/sockets.target.wants/*udev* \
     && rm -f /lib/systemd/system/sockets.target.wants/*initctl* \
     && rm -f /lib/systemd/system/basic.target.wants/* \
-    && rm -f /lib/systemd/system/anaconda.target.wants/*
-
-# Install Package
-RUN cd /etc/yum.repos.d/ \
+    && rm -f /lib/systemd/system/anaconda.target.wants/* \
+    && cd /etc/yum.repos.d/ \
     && sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* \
     && sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* \
     && yum install epel-release -y \

@@ -18,17 +18,6 @@ sudo vim /etc/fstab
 /dev/mapper/data-repos /data xfs defaults 0 0 
 
 sudo mount -a
-
-
-
-$ sudo dnf update -y
-$ sudo dnf config-manager --enable powertools
-$ sudo dnf install -y centos-release-openstack-xena
-$ sudo dnf update -y
-$ sudo dnf install -y openstack-packstack
-$ sudo packstack --allinone
-
 cp conf/httpd.conf /etc/httpd/conf/httpd.conf
 
-docker build -t kolla-deploy:xena --force-rm -f kolla-deploy.dockerfile .
-docker run -d --name deploy-1 kolla-deploy:xena 
+
