@@ -20,4 +20,5 @@ sudo vim /etc/fstab
 sudo mount -a
 cp conf/httpd.conf /etc/httpd/conf/httpd.conf
 
+mkdir /data/repos/images
 
