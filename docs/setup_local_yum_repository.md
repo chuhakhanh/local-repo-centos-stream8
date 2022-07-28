@@ -2,6 +2,9 @@ mkdir -p /data/repos/2022_03/8-stream
 
 ## Setup httpd
 yum install httpd
+cp conf/httpd.conf /etc/httpd/conf/httpd.conf
+mkdir /data/repos/images
+
 
 ##	Repo list
 ### Centos 8 Stream Repos
@@ -54,3 +57,5 @@ createrepo -v /data/repos/2022_03/centos/8/centos-rabbitmq-38
 
 createrepo -v /data/repos/2022_03/centos/8/epel
 createrepo -v /data/repos/2022_03/centos/8/epel-modular
+
+
