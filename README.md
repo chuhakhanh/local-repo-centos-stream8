@@ -19,6 +19,9 @@ https://access.redhat.com/solutions/23016
   /dev/mapper/data-repos /data xfs defaults 0 0 
   sudo mount -a
 
+/data/registry: for local registry
+/data/repos: for local repository
+/data/harbor: for local harbor
 ## Setup
 ### Setup local repository
 [Following steps in docs/setup_local_quay.md to setup a local quay](docs/setup_local_registry.md)
