@@ -44,3 +44,4 @@ openstack.kolla/centos-source-cron:xena
 openstack.kolla/centos-source-haproxy:xena
 openstack.kolla/centos-source-keepalived:xena
 openstack.kolla/centos-source-mariadb-clustercheck:xena
+openstack.kolla/centos-source-gnocchi-api:xena
