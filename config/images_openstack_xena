@@ -45,3 +45,7 @@ openstack.kolla/centos-source-haproxy:xena
 openstack.kolla/centos-source-keepalived:xena
 openstack.kolla/centos-source-mariadb-clustercheck:xena
 openstack.kolla/centos-source-gnocchi-api:xena
+openstack.kolla/centos-source-gnocchi-metricd:xena
+openstack.kolla/centos-source-ceilometer-compute 
+openstack.kolla/centos-source-ceilometer-central 
+openstack.kolla/centos-source-ceilometer-notification
