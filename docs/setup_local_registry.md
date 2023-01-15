@@ -1,3 +1,8 @@
+# Introduction
+## References
+  
+  https://www.cnblogs.com/weiwei2021/p/14611055.html
+  
 # Deploy registry
 Registry contains images. 
 In this setup, images is used for Openstack installation with Kolla ansible version Xena
@@ -15,8 +20,37 @@ In this setup, images is used for Openstack installation with Kolla ansible vers
 
 ## Configure Kolla Ansible Images version Xena
 
-  chmod u+x scripts/images_provisioing.sh
-  scripts/images_provisioing.sh config/images_openstack_xena repo-1:4000
+### Provisioning images from images_openstack_xena list and registry repo-1:4000
+
+  chmod u+x scripts/images_provisioning.sh
+  scripts/images_provisioning.sh config/images_openstack_xena repo-1:4000
+
+
+### Provisioning specific images to registry repo-1:4000
+
+  export repo_url=repo-1:4000
+
+  for line in openstack.kolla/centos-source-ceilometer-compute:xena openstack.kolla/centos-source-ceilometer-central:xena openstack.kolla/entos-source-ceilometer-notification:xena
+  do
+      docker pull quay.io/$line
+      docker tag quay.io/$line $repo_url/$line
+      docker push $repo_url/$line
+  done
+  
+  for line in openstack.kolla/centos-source-cinder-backup:xena
+  do
+      docker pull quay.io/$line
+      docker tag quay.io/$line $repo_url/$line
+      docker push $repo_url/$line
+  done
+
+Check images list in registry
+
+  curl -X GET http://repo-1:4000/v2/_catalog | jq -r 
+
+Create deployment docker for Xena
+
+  docker build -t kolla-deploy:xena --force-rm -f config/kolla-deploy.dockerfile .
 
 ## Configure for client
 
@@ -38,10 +72,6 @@ In this setup, images is used for Openstack installation with Kolla ansible vers
   }
   }
 
-## On new client
-
-  curl -X GET http://repo-1:4000/v2/_catalog | jq -r 
-  docker pull repo-1:4000/openstack.kolla/centos-source-mariadb-server:xena
 
   curl -sSL https://get.docker.io | bash
   echo 'INSECURE_REGISTRY="--insecure-registry repo-1:4000"' > /etc/sysconfig/docker
@@ -58,10 +88,6 @@ In this setup, images is used for Openstack installation with Kolla ansible vers
   systemctl restart docker
 
 
-  docker pull repo-1:4000/centos-source-cinder-api:xena
+## On deploy server
 
-
-## Create deployment docker for Xena
-
-  docker build -t kolla-deploy:xena --force-rm -f kolla-deploy.dockerfile .
   docker run -d --name deploy-1 kolla-deploy:xena 
