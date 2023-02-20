@@ -9,7 +9,6 @@ In this setup, images is used for Openstack installation with Kolla ansible vers
 
 ## Configure storage
 
-
   sudo dnf install python3-pip
   sudo dnf install python3-devel libffi-devel gcc openssl-devel python3-libselinux
   pip3 install 'ansible==2.10.7'
@@ -44,6 +43,13 @@ In this setup, images is used for Openstack installation with Kolla ansible vers
       docker push $repo_url/$line
   done
 
+  for line in openstack.kolla/centos-source-kolla-toolbox:xena openstack.kolla/centos-source-cron:xena
+  do
+      docker pull quay.io/$line
+      docker tag quay.io/$line $repo_url/$line
+      docker push $repo_url/$line
+  done
+  
 Check images list in registry
 
   curl -X GET http://repo-1:4000/v2/_catalog | jq -r 

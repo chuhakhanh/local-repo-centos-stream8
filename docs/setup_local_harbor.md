@@ -1,6 +1,4 @@
 # Deploy local Harbor container registry
-
-
     
 
 ### Software version
