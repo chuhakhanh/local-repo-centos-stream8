@@ -1,17 +1,18 @@
-# local-repo
+# Local Repository for Centos Stream 8
 
-This guide to setup a local repository for centos-stream-8
-## references
-https://access.redhat.com/solutions/23016
+This guide is aim to setup a local repository, private registry for centos-stream-8. 
 
-## Setup
+## Architecture
 
-### Configure storage
-Preapre
+Storage 
+
 /data/registry: for local registry
 /data/repos: for local repository
 /data/harbor: for local harbor
 
+## Setup 
+
+### Configure storage
   ./scripts/storage_prepare.sh
 
 ### Setup local repository
@@ -21,9 +22,8 @@ Preapre
 ### Setup quayio
 [Following steps in docs/setup_local_yum_repository.md to setup a local repository](docs/setup_local_yum_repository.md)
 
-## Client
-### On deploy node configure docker repo to repo-1 and download deloyment docker
-
+### Client
+On deploy node configure docker repo to repo-1 and download deloyment docker
 
 ### remove podman and install docker-ce
 yum remove buildah skopeo podman containers-common atomic-registries docker container-tools
@@ -40,4 +40,6 @@ docker exec -it deploy-1 /bin/bash;
 vi ~/.bashrc 
 alias ll='ls -lG'
 
+## References
 
+  https://access.redhat.com/solutions/23016
