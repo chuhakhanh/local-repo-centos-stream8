@@ -9,7 +9,6 @@ reposync -p /data/repos/$repo_date/centos/8-stream/ --download-metadata --repo=e
 reposync -p /data/repos/$repo_date/centos/8-stream/ --download-metadata --repo=powertools
 
 reposync -p /data/repos/$repo_date/docker/ --download-metadata --repo=docker-ce-stable 
-reposync -p /data/repos/$repo_date/docker/ --repo=docker
 
 reposync -p /data/repos/$repo_date/centos/8/ --download-metadata --repo=centos-advanced-virtualization                                                           
 reposync -p /data/repos/$repo_date/centos/8/ --download-metadata --repo=centos-ceph-pacific                                                                      
@@ -21,20 +20,19 @@ reposync -p /data/repos/$repo_date/centos/8/ --repo=epel
 reposync -p /data/repos/$repo_date/centos/8/ --repo=epel-modular 
 
 ## create repo metadata
-createrepo -v /data/repos/$repo_date/centos/8-stream/appstream
-createrepo -v /data/repos/$repo_date/centos/8-stream/baseos/
-createrepo -v /data/repos/$repo_date/centos/8-stream/extras/ 
-createrepo -v /data/repos/$repo_date/centos/8-stream/powertools/ 
+createrepo /data/repos/$repo_date/centos/8-stream/appstream
+createrepo /data/repos/$repo_date/centos/8-stream/baseos/
+createrepo /data/repos/$repo_date/centos/8-stream/extras/ 
+createrepo /data/repos/$repo_date/centos/8-stream/powertools/ 
 
-createrepo -v /data/repos/$repo_date/docker/docker-ce-stable
-createrepo -v /data/repos/$repo_date/docker/docker
+createrepo /data/repos/$repo_date/docker/docker-ce-stable
 
-createrepo -v /data/repos/$repo_date/centos/8/centos-advanced-virtualization 
-createrepo -v /data/repos/$repo_date/centos/8/centos-ceph-pacific            
-createrepo -v /data/repos/$repo_date/centos/8/centos-nfv-openvswitch         
-createrepo -v /data/repos/$repo_date/centos/8/centos-openstack-xena          
-createrepo -v /data/repos/$repo_date/centos/8/centos-rabbitmq-38      
+createrepo /data/repos/$repo_date/centos/8/centos-advanced-virtualization 
+createrepo /data/repos/$repo_date/centos/8/centos-ceph-pacific            
+createrepo /data/repos/$repo_date/centos/8/centos-nfv-openvswitch         
+createrepo /data/repos/$repo_date/centos/8/centos-openstack-xena          
+createrepo /data/repos/$repo_date/centos/8/centos-rabbitmq-38      
 
-createrepo -v /data/repos/$repo_date/centos/8/epel
-createrepo -v /data/repos/$repo_date/centos/8/epel-modular
+createrepo /data/repos/$repo_date/centos/8/epel
+createrepo /data/repos/$repo_date/centos/8/epel-modular
 
